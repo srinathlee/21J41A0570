@@ -3,8 +3,10 @@ const axios = require('axios');
 
 
 exports.getallProducts = async (req, res) => {
+    console.log("hhhh")
     try {
 
+   console.log("hh")
     const authBody={
         "companyName": "goMart",
         "clientID": "5a89e05d-e121-47dc-9463-4809c731786b",
@@ -25,19 +27,16 @@ exports.getallProducts = async (req, res) => {
         "Authorization": `Bearer ${access_token}`, 
         'Content-Type': 'application/json' 
       };
-  
-      // Make the request with headers
+
       const response = await axios.get(
         'http://20.244.56.144/test/companies/AMZ/categories/Laptop/products?top=10&minPrice=100&maxPrice=100000',
-        {headers} // Correctly pass the headers in the configuration object
+        {headers} 
       );
   
- 
-      console.log(response.data); 
       res.json(response.data)
+      console.log(response.data)
 
     } catch (e) {
-      // Handle errors
       console.error(e);
       res.status(500).json({ error: 'Failed to fetch products' });
     }
